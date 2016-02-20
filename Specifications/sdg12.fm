@@ -1,7 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <featureModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.2" name="" xmlns="http://schemas.microsoft.com/dsltools/ApletDsl">
   <featureModelElements>
-    <feature name="sdg12" occurence="Mandatory" isReference="false" />
+    <feature name="sdg12" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//ProductTracking" />
+        <featureMoniker name="//ProductDiscovery" />
+        <featureMoniker name="//NetworkBuilding" />
+      </subFeatureModelElements>
+    </feature>
     <feature name="AddProduct" occurence="Mandatory" isReference="false" />
+    <feature name="TagProduct" occurence="Mandatory" isReference="false" />
+    <feature name="AddPlaceToBuy" occurence="Mandatory" isReference="false" />
+    <feature name="ProductTracking" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//AddProduct" />
+        <featureMoniker name="//AddPlaceToBuy" />
+        <featureMoniker name="//TagProduct" />
+      </subFeatureModelElements>
+    </feature>
+    <feature name="ProductDiscovery" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//SearchForProduct" />
+      </subFeatureModelElements>
+    </feature>
+    <feature name="NetworkBuilding" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//TrustUser" />
+      </subFeatureModelElements>
+    </feature>
+    <feature name="TrustUser" occurence="Mandatory" isReference="false" />
+    <feature name="SearchForProduct" occurence="Mandatory" isReference="false" />
   </featureModelElements>
 </featureModel>
