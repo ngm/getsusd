@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using sdg12.Models;
 using sdg12.Service.Handlers;
 using sdg12.Service.Messages;
 using System;
@@ -31,6 +32,24 @@ namespace sdg12.Controllers
             var result = handler.Handle(request);
 
             return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult Add(ProductInputModel productInputs)
+        {
+            var userId = 1;
+
+            var command = new AddProductCommand
+            {
+                UserId = userId,
+                ProductName = productInputs.ProductName,
+                ProductNotes = productInputs.ProductNotes
+            };
+
+            var handler = new AddProductCommandHandler(nhSession);
+            var result = handler.Handle(command);
+
+            return RedirectToAction("List");
         }
     }
 }
