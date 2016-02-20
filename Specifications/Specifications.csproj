@@ -45,12 +45,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddProduct.feature</DependentUpon>
     </Compile>
+    <Compile Include="Goals\Overview.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Overview.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\AddProduct.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Goals\Overview.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Overview.feature.cs</LastGenOutput>
     </None>
     <None Include="sdg12.fm" />
   </ItemGroup>
