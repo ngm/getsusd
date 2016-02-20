@@ -1,11 +1,12 @@
-﻿using NHibernate;
+﻿using MediatR;
+using NHibernate;
 using sdg12.Core;
 using sdg12.Service.Messages;
 using System;
 
 namespace sdg12.Service.Handlers
 {
-    public class AddProductCommandHandler
+    public class AddProductCommandHandler : IRequestHandler<AddProductCommand, AddProductResponse>
     {
         private readonly ISession nhSession;
 

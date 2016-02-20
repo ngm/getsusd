@@ -140,5 +140,14 @@
         <featureShapeMoniker Id="8f1439ac-98fe-46a1-b166-c523829edc79" />
       </nodes>
     </connectConnector>
+    <featureShape Id="20657cf9-7e62-452a-bcf0-b3ddc5a6d453" absoluteBounds="10.625, 3.75, 1.5, 0.375">
+      <featureMoniker name="//EditProduct" />
+    </featureShape>
+    <connectConnector edgePoints="[(8.375 : 2.25); (11.375 : 3.75)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="3ede3913-0adb-4eb7-ab7d-49c96e946ea9">
+      <nodes>
+        <featureShapeMoniker Id="8db24a3a-f6be-402a-9b37-ebd8e7b140a6" />
+        <featureShapeMoniker Id="20657cf9-7e62-452a-bcf0-b3ddc5a6d453" />
+      </nodes>
+    </connectConnector>
   </nestedChildShapes>
 </minimalLanguageDiagram>

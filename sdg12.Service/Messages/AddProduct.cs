@@ -1,6 +1,8 @@
-﻿namespace sdg12.Service.Messages
+﻿using MediatR;
+
+namespace sdg12.Service.Messages
 {
-    public class AddProductCommand
+    public class AddProductCommand : IRequest<AddProductResponse>
     {
         public AddProductCommand()
         {

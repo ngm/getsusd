@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using MediatR;
+using NHibernate;
 using sdg12.Models;
 using sdg12.Service.Handlers;
 using sdg12.Service.Messages;
@@ -12,11 +13,11 @@ namespace sdg12.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ISession nhSession;
+        private readonly IMediator mediator;
 
-        public ProductController(ISession nhSession)
+        public ProductController(IMediator mediator)
         {
-            this.nhSession = nhSession;
+            this.mediator = mediator;
         }
 
         public ActionResult List()
@@ -28,8 +29,7 @@ namespace sdg12.Controllers
                 UserId = userId
             };
 
-            var handler = new GetProductsQueryHandler(nhSession);
-            var result = handler.Handle(request);
+            var result = mediator.Send(request);
 
             return View(result);
         }
@@ -46,8 +46,7 @@ namespace sdg12.Controllers
                 ProductNotes = productInputs.ProductNotes
             };
 
-            var handler = new AddProductCommandHandler(nhSession);
-            var result = handler.Handle(command);
+            var result = mediator.Send(command);
 
             return RedirectToAction("List");
         }

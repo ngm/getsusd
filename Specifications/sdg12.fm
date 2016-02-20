@@ -20,6 +20,7 @@
         <featureMoniker name="//ShameProduct" />
         <featureMoniker name="//LinkToCompany" />
         <featureMoniker name="//ListProducts" />
+        <featureMoniker name="//EditProduct" />
       </subFeatureModelElements>
     </feature>
     <feature name="ProductDiscovery" occurence="Mandatory" isReference="false">
@@ -47,5 +48,6 @@
       </subFeatureModelElements>
     </feature>
     <feature name="ListProducts" occurence="Mandatory" isReference="false" />
+    <feature name="EditProduct" occurence="Mandatory" isReference="false" />
   </featureModelElements>
 </featureModel>

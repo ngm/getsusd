@@ -4,10 +4,11 @@ using sdg12.Core;
 using sdg12.Service.Messages;
 using System;
 using sdg12.Service.Dtos;
+using MediatR;
 
 namespace sdg12.Service.Handlers
 {
-    public class GetProductsQueryHandler
+    public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, GetProductsResponse>
     {
         private readonly ISession nhSession;
 

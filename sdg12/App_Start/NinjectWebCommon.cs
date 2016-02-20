@@ -10,8 +10,12 @@ namespace sdg12.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
     using NHibernate;
     using Infrastructure;
+    using Ninject.Planning.Bindings.Resolvers;
+    using MediatR;
+    using Service.Messages;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -65,6 +69,12 @@ namespace sdg12.App_Start
             kernel.Bind<ISession>()
                 .ToMethod(m => NhHelper.MsSqlSessionFactory.OpenSession())
                 .InRequestScope();
+
+            kernel.Components.Add<IBindingResolver, ContravariantBindingResolver>();
+            kernel.Bind(scan => scan.FromAssemblyContaining<IMediator>().SelectAllClasses().BindDefaultInterface());
+            kernel.Bind(scan => scan.FromAssemblyContaining<AddProductCommand>().SelectAllClasses().BindAllInterfaces());
+            kernel.Bind<SingleInstanceFactory>().ToMethod(ctx => t => ctx.Kernel.Get(t));
+            kernel.Bind<MultiInstanceFactory>().ToMethod(ctx => t => ctx.Kernel.GetAll(t));
         }        
     }
 }
