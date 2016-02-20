@@ -13,7 +13,10 @@ namespace sdg12.Core
             Products = new List<UserProduct>();
         }
 
-        public string Name { get; set; }
-        public IList<UserProduct> Products { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string UserName { get; set; }
+        public virtual IList<UserProduct> Products { get; set; }
+        public virtual string GivenName { get; set; }
+        public virtual string Surname { get; set; }
     }
 }

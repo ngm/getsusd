@@ -12,7 +12,8 @@ namespace sdg12.Core
         {
         }
 
-        public string Name { get; set; }
-        public string Notes { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Notes { get; set; }
     }
 }

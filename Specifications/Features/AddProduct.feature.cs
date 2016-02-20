@@ -75,11 +75,11 @@ namespace Specifications.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add product with name and notes")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("domain")]
         public virtual void AddProductWithNameAndNotes()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add product with name and notes", new string[] {
-                        "mytag"});
+                        "domain"});
 #line 10
 this.ScenarioSetup(scenarioInfo);
 #line 6

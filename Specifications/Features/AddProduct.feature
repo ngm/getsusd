@@ -6,7 +6,7 @@
 Background: 
     Given Bart is an ethical consumer
 
-@mytag
+@domain
 Scenario: Add product with name and notes
     When Bart adds the product:
     | Name                     | Notes                                                                            |
