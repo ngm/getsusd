@@ -19,21 +19,20 @@ namespace Specifications.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("AddProduct")]
-    public partial class AddProductFeature
+    [NUnit.Framework.DescriptionAttribute("Shame Product")]
+    public partial class ShameProductFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "AddProduct.feature"
+#line 1 "ShameProduct.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddProduct", "In order to keep track of my ethical choices\nAs a user\nI want to record the produ" +
-                    "cts I buy", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Shame Product", "  Need some way of recording products we wouldn\'t buy.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,40 +62,6 @@ namespace Specifications.Features
         public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
-        }
-        
-        public virtual void FeatureBackground()
-        {
-#line 6
-#line 7
-    testRunner.Given("Bart is an ethical consumer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add product with name and notes")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void AddProductWithNameAndNotes()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add product with name and notes", new string[] {
-                        "mytag"});
-#line 10
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Notes"});
-            table1.AddRow(new string[] {
-                        "Green Oil Wet Chain Lube",
-                        "I use this to oil my chain.  It\'s plant-based, bio-degradable, and made locally."});
-#line 11
-    testRunner.When("Bart adds the product:", ((string)(null)), table1, "When ");
-#line 14
-    testRunner.Then("the product is added to Bart\'s list of products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
         }
     }
 }

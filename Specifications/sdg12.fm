@@ -6,6 +6,7 @@
         <featureMoniker name="//ProductTracking" />
         <featureMoniker name="//ProductDiscovery" />
         <featureMoniker name="//NetworkBuilding" />
+        <featureMoniker name="//CompanyTracking" />
       </subFeatureModelElements>
     </feature>
     <feature name="AddProduct" occurence="Mandatory" isReference="false" />
@@ -16,11 +17,14 @@
         <featureMoniker name="//AddProduct" />
         <featureMoniker name="//AddPlaceToBuy" />
         <featureMoniker name="//TagProduct" />
+        <featureMoniker name="//ShameProduct" />
+        <featureMoniker name="//LinkToCompany" />
       </subFeatureModelElements>
     </feature>
     <feature name="ProductDiscovery" occurence="Mandatory" isReference="false">
       <subFeatureModelElements>
         <featureMoniker name="//SearchForProduct" />
+        <featureMoniker name="//TrustRanking" />
       </subFeatureModelElements>
     </feature>
     <feature name="NetworkBuilding" occurence="Mandatory" isReference="false">
@@ -30,5 +34,16 @@
     </feature>
     <feature name="TrustUser" occurence="Mandatory" isReference="false" />
     <feature name="SearchForProduct" occurence="Mandatory" isReference="false" />
+    <feature name="ShameProduct" occurence="Mandatory" isReference="false" />
+    <feature name="LinkToCompany" occurence="Mandatory" isReference="false" />
+    <feature name="CompanyTracking" occurence="Mandatory" isReference="false" />
+    <feature name="TrustRankingFromNetwork" occurence="Mandatory" isReference="false" />
+    <feature name="TrustRankingFromEveryone" occurence="Mandatory" isReference="false" />
+    <feature name="TrustRanking" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//TrustRankingFromEveryone" />
+        <featureMoniker name="//TrustRankingFromNetwork" />
+      </subFeatureModelElements>
+    </feature>
   </featureModelElements>
 </featureModel>
