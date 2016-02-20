@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<featureModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.2" name="" xmlns="http://schemas.microsoft.com/dsltools/ApletDsl">
+  <featureModelElements>
+    <feature name="sdg12" occurence="Mandatory" isReference="false" />
+    <feature name="AddProduct" occurence="Mandatory" isReference="false" />
+  </featureModelElements>
+</featureModel>
