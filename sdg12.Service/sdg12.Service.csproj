@@ -48,8 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\UserProductDto.cs" />
+    <Compile Include="Handlers\GetProductsQueryHandler.cs" />
     <Compile Include="Messages\AddProduct.cs" />
     <Compile Include="Handlers\AddProductCommandHandler.cs" />
+    <Compile Include="Messages\GetProducts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +64,7 @@
       <Name>sdg12.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

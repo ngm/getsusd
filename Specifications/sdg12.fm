@@ -19,6 +19,7 @@
         <featureMoniker name="//TagProduct" />
         <featureMoniker name="//ShameProduct" />
         <featureMoniker name="//LinkToCompany" />
+        <featureMoniker name="//ListProducts" />
       </subFeatureModelElements>
     </feature>
     <feature name="ProductDiscovery" occurence="Mandatory" isReference="false">
@@ -45,5 +46,6 @@
         <featureMoniker name="//TrustRankingFromNetwork" />
       </subFeatureModelElements>
     </feature>
+    <feature name="ListProducts" occurence="Mandatory" isReference="false" />
   </featureModelElements>
 </featureModel>

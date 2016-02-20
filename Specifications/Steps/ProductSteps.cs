@@ -1,13 +1,11 @@
-﻿using NHibernate.Linq;
-using FluentAssertions;
-using sdg12.Core;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using TechTalk.SpecFlow;
+﻿using FluentAssertions;
 using NHibernate;
-using sdg12.Service.Messages;
+using NHibernate.Linq;
+using sdg12.Core;
 using sdg12.Service.Handlers;
+using sdg12.Service.Messages;
+using System.Linq;
+using TechTalk.SpecFlow;
 
 namespace Specifications.Steps
 {
@@ -20,7 +18,6 @@ namespace Specifications.Steps
         {
             this.sessionFactory = sessionFactoryHolder.SessionFactory;
         }
-
 
         [When(@"(.*) adds the product:")]
         public void WhenUserAddsTheProduct(string userName, Table table)
@@ -37,7 +34,7 @@ namespace Specifications.Steps
 
             ScenarioContext.Current.Set(command);
         }
-        
+
         [Then(@"the product is added to (.*)'s list of products")]
         public void ThenTheProductIsAddedToBartSListOfProducts(string userName)
         {
@@ -47,6 +44,50 @@ namespace Specifications.Steps
             var product = user.Products.First();
             product.Name.Should().Be(command.ProductName);
             product.Notes.Should().Be(command.ProductNotes);
+        }
+
+        [Given(@"(.*) has saved the following products")]
+        public void GivenUserHasSavedTheFollowingProducts(string userName, Table table)
+        {
+            var user = sessionFactory.OpenSession().Query<User>().First(u => u.UserName == userName);
+
+            foreach (var row in table.Rows)
+            {
+                var command = new AddProductCommand();
+                command.UserId = user.Id;
+                command.ProductName = row["Name"];
+                command.ProductNotes = row["Notes"];
+
+                var handler = new AddProductCommandHandler(sessionFactory.OpenSession());
+                handler.Handle(command);
+            }
+        }
+
+        [When(@"(.*) views their list of products")]
+        public void WhenBartViewsHisListOfProducts(string userName)
+        {
+            var user = sessionFactory.OpenSession().Query<User>().First(u => u.UserName == userName);
+
+            var query = new GetProductsQuery
+            {
+                UserId = user.Id
+            };
+            var handler = new GetProductsQueryHandler(sessionFactory.OpenSession());
+            var response = handler.Handle(query);
+            ScenarioContext.Current.Set(response);
+        }
+
+        [Then(@"(.*)'s list of products should be as follows:")]
+        public void ThenTheAllOfHisProductShouldBeVisible(string userName, Table table)
+        {
+            var response = ScenarioContext.Current.Get<GetProductsResponse>();
+            foreach (var row in table.Rows)
+            {
+                var productName = row["Name"];
+                var productNotes = row["Notes"];
+                response.Products.Any(p => p.ProductName == productName && p.ProductNotes == productNotes)
+                    .Should().BeTrue();
+            }
         }
     }
 }
