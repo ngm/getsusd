@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\UserProductDto.cs" />
+    <Compile Include="Handlers\EditProductCommandHandler.cs" />
     <Compile Include="Handlers\GetProductsQueryHandler.cs" />
+    <Compile Include="Messages\EditProduct.cs" />
     <Compile Include="Messages\AddProduct.cs" />
     <Compile Include="Handlers\AddProductCommandHandler.cs" />
     <Compile Include="Messages\GetProducts.cs" />

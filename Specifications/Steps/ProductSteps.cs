@@ -89,5 +89,37 @@ namespace Specifications.Steps
                     .Should().BeTrue();
             }
         }
+
+        [When(@"(.*) changes the name of '(.*)' to '(.*)'")]
+        public void WhenBartChangesTheNameOfTo(string userName, string originalName, string newName)
+        {
+            var user = sessionFactory.OpenSession().Query<User>().First(u => u.UserName == userName);
+            var product = sessionFactory.OpenSession().Query<UserProduct>().First(p => p.Name == originalName);
+
+            var command = new EditProductCommand
+            {
+                ProductId = product.Id,
+                UserId = user.Id,
+                ProductName = newName,
+                ProductNotes = product.Notes 
+            };
+
+            var handler = new EditProductCommandHandler(sessionFactory.OpenSession());
+            handler.Handle(command);
+        }
+
+        [Then(@"the following products exist")]
+        public void ThenTheFollowingProductsExist(Table table)
+        {
+            using (var session = sessionFactory.OpenSession())
+            {
+
+                foreach (var row in table.Rows)
+                {
+                    var productName = row["Name"];
+                    session.Query<UserProduct>().First(p => p.Name == productName);
+                }
+            }
+        }
     }
 }

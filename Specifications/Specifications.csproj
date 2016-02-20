@@ -104,6 +104,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddProduct.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EditProduct.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditProduct.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ListProducts.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +134,10 @@
     <None Include="Features\AddProduct.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EditProduct.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EditProduct.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\ListProducts.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
