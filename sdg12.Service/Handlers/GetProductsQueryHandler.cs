@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using MediatR;
 using NHibernate;
 using sdg12.Core;
-using sdg12.Service.Messages;
-using System;
 using sdg12.Service.Dtos;
-using MediatR;
+using sdg12.Service.Messages;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace sdg12.Service.Handlers
 {
@@ -21,17 +21,26 @@ namespace sdg12.Service.Handlers
         {
             var user = nhSession.Get<User>(message.UserId);
 
-            var products = user.Products
-                .Select(p => new UserProductDto
-                {
-                    ProductId = p.Id,
-                    ProductName = p.Name,
-                    ProductNotes = p.Notes
-                }).ToList();
+            IEnumerable<UserProduct> products;
+
+            if (message.ProductId != null)
+            {
+                products = user.Products.Where(p => p.Id == message.ProductId);
+            }
+            else
+            {
+                products = user.Products;
+            }
 
             return new GetProductsResponse
             {
                 Products = products
+                    .Select(p => new UserProductDto
+                    {
+                        ProductId = p.Id,
+                        ProductName = p.Name,
+                        ProductNotes = p.Notes
+                    }).ToList()
             };
         }
     }

@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace sdg12.Controllers
 {
+    [RoutePrefix("Product")]
     public class ProductController : Controller
     {
         private readonly IMediator mediator;
@@ -20,6 +21,7 @@ namespace sdg12.Controllers
             this.mediator = mediator;
         }
 
+        [Route("List")]
         public ActionResult List()
         {
             var userId = 1;
@@ -35,6 +37,7 @@ namespace sdg12.Controllers
         }
 
         [HttpPost]
+        [Route("Add")]
         public ActionResult Add(ProductInputModel productInputs)
         {
             var userId = 1;
@@ -49,6 +52,42 @@ namespace sdg12.Controllers
             var result = mediator.Send(command);
 
             return RedirectToAction("List");
+        }
+
+
+        [Route("View")]
+        public ActionResult View(int productId)
+        {
+            var userId = 1;
+
+            var request = new GetProductsQuery()
+            {
+                UserId = userId,
+                ProductId = productId
+            };
+
+            var result = mediator.Send(request);
+
+            return View(result.Products.First());
+        }
+
+        [HttpPost]
+        [Route("Edit")]
+        public ActionResult Edit(ProductInputModel productInputs)
+        {
+            var userId = 1;
+
+            var command = new EditProductCommand
+            {
+                ProductId = productInputs.ProductId,
+                UserId = userId,
+                ProductName = productInputs.ProductName,
+                ProductNotes = productInputs.ProductNotes
+            };
+
+            var result = mediator.Send(command);
+
+            return RedirectToAction("View", new { productId = productInputs.ProductId });
         }
     }
 }

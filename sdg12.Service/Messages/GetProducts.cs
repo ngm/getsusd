@@ -11,6 +11,7 @@ namespace sdg12.Service.Messages
     public class GetProductsQuery : IRequest<GetProductsResponse>
     {
         public int UserId { get; set; }
+        public int? ProductId { get; set; }
     }
 
     public class GetProductsResponse

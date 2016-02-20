@@ -1,0 +1,22 @@
+﻿@model sdg12.Service.Dtos.UserProductDto
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>@Model.ProductName</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.HiddenFor(m => m.ProductId)
+    <div class="form-group">
+        <label for="ProductName">Product Name</label>
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="ProductNotes">Product Notes</label>
+        @Html.TextAreaFor(m => m.ProductNotes, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
