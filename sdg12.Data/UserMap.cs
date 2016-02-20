@@ -1,10 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
-using sdg12.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using sdg12.Core.Entities;
 
 namespace sdg12.Data
 {

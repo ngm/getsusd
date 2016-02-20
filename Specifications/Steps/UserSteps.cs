@@ -1,7 +1,5 @@
 ﻿using NHibernate;
-using sdg12.Core;
-using System;
-using System.Collections;
+using sdg12.Core.Entities;
 using TechTalk.SpecFlow;
 
 namespace Specifications.Steps

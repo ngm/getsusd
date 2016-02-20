@@ -119,6 +119,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShameProduct.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TagProduct.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TagProduct.feature</DependentUpon>
+    </Compile>
     <Compile Include="Goals\Overview.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +151,10 @@
     <None Include="Features\ShameProduct.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ShameProduct.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TagProduct.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TagProduct.feature.cs</LastGenOutput>
     </None>
     <None Include="Goals\Overview.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

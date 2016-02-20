@@ -11,5 +11,6 @@ namespace sdg12.Service.Dtos
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductNotes { get; set; }
+        public IList<UserProductTagDto> Tags { get; set; }
     }
 }

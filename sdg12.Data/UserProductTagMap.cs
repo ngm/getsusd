@@ -9,16 +9,14 @@ using System.Threading.Tasks;
 
 namespace sdg12.Data
 {
-    public class UserProductMap : ClassMap<UserProduct>
+    public class UserProductTagMap : ClassMap<UserProductTag>
     {
-        public UserProductMap()
+        public UserProductTagMap()
         {
             Id(x => x.Id);
 
-            Map(x => x.Name);
-            Map(x => x.Notes);
-
-            HasMany(x => x.Tags).Cascade.AllDeleteOrphan();
+            References(x => x.UserProduct).Column("UserProductId");
+            References(x => x.Tag).Column("TagId");
         }
     }
 }

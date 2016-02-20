@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using NHibernate;
-using sdg12.Core;
+using sdg12.Core.Entities;
 using sdg12.Service.Dtos;
 using sdg12.Service.Messages;
 using System.Collections.Generic;
@@ -39,7 +39,8 @@ namespace sdg12.Service.Handlers
                     {
                         ProductId = p.Id,
                         ProductName = p.Name,
-                        ProductNotes = p.Notes
+                        ProductNotes = p.Notes,
+                        Tags = p.Tags.Select(t => new UserProductTagDto {  TagId = t.Tag.Id, TagName = t.Tag.Name, UserProductTagId = t.Id }).ToList()
                     }).ToList()
             };
         }

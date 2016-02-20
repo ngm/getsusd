@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TagMap.cs" />
+    <Compile Include="UserProductTagMap.cs" />
     <Compile Include="UserProductMap.cs" />
     <Compile Include="UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

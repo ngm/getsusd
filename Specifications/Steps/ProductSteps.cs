@@ -2,6 +2,7 @@
 using NHibernate;
 using NHibernate.Linq;
 using sdg12.Core;
+using sdg12.Core.Entities;
 using sdg12.Service.Handlers;
 using sdg12.Service.Messages;
 using System.Linq;
@@ -101,7 +102,7 @@ namespace Specifications.Steps
                 ProductId = product.Id,
                 UserId = user.Id,
                 ProductName = newName,
-                ProductNotes = product.Notes 
+                ProductNotes = product.Notes
             };
 
             var handler = new EditProductCommandHandler(sessionFactory.OpenSession());
@@ -113,12 +114,40 @@ namespace Specifications.Steps
         {
             using (var session = sessionFactory.OpenSession())
             {
-
                 foreach (var row in table.Rows)
                 {
                     var productName = row["Name"];
                     session.Query<UserProduct>().First(p => p.Name == productName);
                 }
+            }
+        }
+
+        [When(@"(.*) tags '(.*)' with '(.*)'")]
+        public void WhenBartTagsWith(string userName, string productName, string tagName)
+        {
+            using (var session = sessionFactory.OpenSession())
+            {
+                var user = session.Query<User>().First(u => u.UserName == userName);
+                var product = session.Query<UserProduct>().First(p => p.Name == productName);
+
+                var tagUserProductCommand = new AddTagToProductCommand()
+                {
+                    ProductId = product.Id,
+                    UserId = user.Id,
+                    TagName = tagName
+                };
+
+                var result = new AddTagToProductCommandHandler(session).Handle(tagUserProductCommand);
+            }
+        }
+
+        [Then(@"the '(.*)' product should have the '(.*)' tag")]
+        public void ThenTheProductShouldHaveTheTag(string productName, string tagName)
+        {
+            using (var session = sessionFactory.OpenSession())
+            {
+                var userProduct = session.Query<UserProduct>().First(p => p.Name == productName);
+                userProduct.Tags.Any(t => t.Tag.Name == tagName).Should().BeTrue();
             }
         }
     }

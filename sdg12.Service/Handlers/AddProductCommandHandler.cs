@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using NHibernate;
-using sdg12.Core;
+using sdg12.Core.Entities;
 using sdg12.Service.Messages;
-using System;
 
 namespace sdg12.Service.Handlers
 {

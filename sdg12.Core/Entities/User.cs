@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sdg12.Core
+namespace sdg12.Core.Entities
 {
     public class User
     {

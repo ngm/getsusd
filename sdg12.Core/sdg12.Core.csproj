@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\UserProductTag.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\UserProduct.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
