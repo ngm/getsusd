@@ -4,9 +4,28 @@
     ViewBag.Title = "List";
 }
 
-<h2>My Products</h2>
+<h2>Product Tracking</h2>
 
 <div class="row">
+<div class="col-md-12">
+<p style="font-size:150%">
+Track the products you value.  Add them, tag them, share your research and reasons for why
+you trust and value this product.  And keep a note of where you can buy it from!
+</p>
+</div>
+</div>
+
+<h3>My Products</h3>
+
+<div class="row">
+@if (!Model.Products.Any())
+{
+<div class="col-md-12">
+<p>
+You haven't saved any products yet.  You can add some below!
+</p>
+</div>
+}
 
 
     @foreach (var product in Model.Products)

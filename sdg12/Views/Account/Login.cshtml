@@ -1,10 +1,21 @@
 ﻿
+
 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+
 {
+
     <h2 class="form-signin-heading">Please sign in</h2>
+
         <label class="sr-only" for="inputEmail">User Name</label>
-        @Html.TextBox("UserName", null, new { @class = "form-control" })
+
+        @Html.TextBox("UserName", "bart", new { @class = "form-control" })
+
         <label class="sr-only" for="inputPassword">Password</label>
-        @Html.TextBox("Password", null, new { @class = "form-control" })
+
+        @Html.TextBox("Password", "bart", new { @class = "form-control" })
+
         <button type="submit" class="btn btn-lg btn-primary btn-block">Log In</button>
+
 }
+
+
