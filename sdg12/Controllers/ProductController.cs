@@ -107,5 +107,23 @@ namespace sdg12.Controllers
 
             return RedirectToAction("View", new { productId = productId });
         }
+
+        [HttpPost]
+        [Route("{productId}/removetag")]
+        public ActionResult RemoveTag(int productId, int userProductTagId)
+        {
+            var userId = 1;
+
+            var command = new RemoveTagFromProductCommand
+            {
+                ProductId = productId,
+                UserId = userId,
+                UserProductTagId = userProductTagId
+            };
+
+            var result = mediator.Send(command);
+
+            return RedirectToAction("View", new { productId = productId });
+        }
     }
 }

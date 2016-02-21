@@ -8,6 +8,7 @@ using NHibernate.Cfg;
 using FluentNHibernate.Mapping.Providers;
 using FluentNHibernate.Mapping;
 using sdg12.Data;
+using NHibernate.Tool.hbm2ddl;
 
 namespace sdg12.Infrastructure
 {
@@ -45,8 +46,11 @@ namespace sdg12.Infrastructure
             get
             {
                 return Fluently.Configure()
-                    .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("TestData")))
+                    .Database(MonoSQLiteConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("sqliteInMemory")))
+                    //.Database(SQLiteConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("sqliteInMemory")))
+                    //.Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("TestData")))
                     .Mappings(cfg => cfg.FluentMappings.AddFromAssemblyOf<UserMap>())
+                    //.ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false, true))
                     .BuildSessionFactory();
             }
         }

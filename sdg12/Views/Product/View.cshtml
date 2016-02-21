@@ -29,7 +29,11 @@
         <p>
             @foreach (var tag in Model.Tags)
             {
-                <span class="badge">@tag.TagName</span>
+                using (Html.BeginForm("RemoveTag", "Product", FormMethod.Post, null))
+                {
+                    @Html.Hidden("UserProductTagId", tag.UserProductTagId)
+                    <span class="badge">@tag.TagName <button type="submit">x</button></span>
+                }
             }
         </p>
         @using (Html.BeginForm("AddTag", "Product", FormMethod.Post, new { @class = "form" }))

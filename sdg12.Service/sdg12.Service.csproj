@@ -54,10 +54,12 @@
   <ItemGroup>
     <Compile Include="Dtos\UserProductTagDto.cs" />
     <Compile Include="Dtos\UserProductDto.cs" />
+    <Compile Include="Handlers\SeedDataCommandHandler.cs" />
     <Compile Include="Handlers\RemoveTagFromProductCommandHandler.cs" />
     <Compile Include="Handlers\AddTagToProductCommandHandler.cs" />
     <Compile Include="Handlers\EditProductCommandHandler.cs" />
     <Compile Include="Handlers\GetProductsQueryHandler.cs" />
+    <Compile Include="Messages\SeedData.cs" />
     <Compile Include="Messages\RemoveTagFromProduct.cs" />
     <Compile Include="Messages\AddTagToProduct.cs" />
     <Compile Include="Messages\EditProduct.cs" />

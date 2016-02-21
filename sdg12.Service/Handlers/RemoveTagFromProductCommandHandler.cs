@@ -22,7 +22,7 @@ namespace sdg12.Service.Handlers
             // todo: permissions
 
             var userProductTag = nhSession.Get<UserProductTag>(command.UserProductTagId);
-            if (userProductTag == null)
+            if (userProductTag != null)
             {
                 using (var tx = nhSession.BeginTransaction())
                 {
