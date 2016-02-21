@@ -19,20 +19,20 @@ namespace Specifications.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("TagProduct")]
-    public partial class TagProductFeature
+    [NUnit.Framework.DescriptionAttribute("Remove Tag From Product")]
+    public partial class RemoveTagFromProductFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "TagProduct.feature"
+#line 1 "RemoveTagFromProduct.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TagProduct", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Remove Tag From Product", "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,10 +73,10 @@ namespace Specifications.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tag product with new tag")]
-        public virtual void TagProductWithNewTag()
+        [NUnit.Framework.DescriptionAttribute("Remove existing tag")]
+        public virtual void RemoveExistingTag()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tag product with new tag", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove existing tag", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 3
@@ -84,19 +84,22 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
-                        "Notes"});
+                        "Notes",
+                        "Tags"});
             table1.AddRow(new string[] {
                         "Green Oil Wet Chain Lube",
-                        "It\'s good"});
+                        "It\'s good",
+                        "bicycle"});
             table1.AddRow(new string[] {
                         "Bulldog Shave Gel",
-                        "Top in ethical consumer ratings"});
+                        "Top in ethical consumer ratings",
+                        ""});
 #line 7
     testRunner.Given("Bart has saved the following products", ((string)(null)), table1, "Given ");
 #line 11
- testRunner.When("Bart tags \'Green Oil Wet Chain Lube\' with \'bicycle\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Bart removes the tag \'bicycle\' from the \'Green Oil Wet Chain Lube\' product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Then("the \'Green Oil Wet Chain Lube\' product should have the \'bicycle\' tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the \'Green Oil Wet Chain Lube\' product should not have the \'bicycle\' tag", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

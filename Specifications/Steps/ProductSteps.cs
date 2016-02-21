@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using NHibernate;
 using NHibernate.Linq;
-using sdg12.Core;
 using sdg12.Core.Entities;
 using sdg12.Service.Handlers;
 using sdg12.Service.Messages;
@@ -50,17 +49,38 @@ namespace Specifications.Steps
         [Given(@"(.*) has saved the following products")]
         public void GivenUserHasSavedTheFollowingProducts(string userName, Table table)
         {
-            var user = sessionFactory.OpenSession().Query<User>().First(u => u.UserName == userName);
-
-            foreach (var row in table.Rows)
+            using (var session = sessionFactory.OpenSession())
             {
-                var command = new AddProductCommand();
-                command.UserId = user.Id;
-                command.ProductName = row["Name"];
-                command.ProductNotes = row["Notes"];
+                var user = session.Query<User>().First(u => u.UserName == userName);
 
-                var handler = new AddProductCommandHandler(sessionFactory.OpenSession());
-                handler.Handle(command);
+                foreach (var row in table.Rows)
+                {
+                    var command = new AddProductCommand
+                    {
+                        UserId = user.Id,
+                        ProductName = row["Name"],
+                        ProductNotes = row["Notes"]
+                    };
+
+                    var handler = new AddProductCommandHandler(session);
+                    var response = handler.Handle(command);
+
+                    if (row.ContainsKey("Tags") && !string.IsNullOrWhiteSpace(row["Tags"]))
+                    {
+                        var addTagHandler = new AddTagToProductCommandHandler(session);
+                        var tagNames = row["Tags"].Split(',').Select(t => t.Trim());
+                        foreach (var tagName in tagNames)
+                        {
+                            var addTagCommand = new AddTagToProductCommand
+                            {
+                                UserId = user.Id,
+                                ProductId = response.NewProductId,
+                                TagName = tagName
+                            };
+                            addTagHandler.Handle(addTagCommand);
+                        }
+                    }
+                }
             }
         }
 
@@ -148,6 +168,36 @@ namespace Specifications.Steps
             {
                 var userProduct = session.Query<UserProduct>().First(p => p.Name == productName);
                 userProduct.Tags.Any(t => t.Tag.Name == tagName).Should().BeTrue();
+            }
+        }
+
+        [When(@"(.*) removes the tag '(.*)' from the '(.*)' product")]
+        public void WhenBartRemovesTheTagFromTheProduct(string userName, string tagName, string productName)
+        {
+            using (var session = sessionFactory.OpenSession())
+            {
+                var userProductTag = session.Query<UserProductTag>().First(t => t.Tag.Name == tagName);
+                var user = session.Query<User>().First(u => u.UserName == userName);
+                var product = session.Query<UserProduct>().First(p => p.Name == productName);
+
+                var command = new RemoveTagFromProductCommand()
+                {
+                    ProductId = product.Id,
+                    UserId = user.Id,
+                    UserProductTagId = userProductTag.Id
+                };
+
+                var result = new RemoveTagFromProductCommandHandler(session).Handle(command);
+            }
+        }
+
+        [Then(@"the '(.*)' product should not have the '(.*)' tag")]
+        public void ThenTheProductShouldNotHaveTheTag(string productName, string tagName)
+        {
+            using (var session = sessionFactory.OpenSession())
+            {
+                var product = session.Query<UserProduct>().First(p => p.Name == productName);
+                product.Tags.Any(t => t.Tag.Name == tagName).Should().BeFalse();
             }
         }
     }

@@ -31,7 +31,10 @@ namespace sdg12.Service.Handlers
                 tx.Commit();
             }
 
-            return new AddProductResponse();
+            return new AddProductResponse
+            {
+                NewProductId = product.Id
+            };
         }
     }
 }

@@ -15,5 +15,6 @@ namespace sdg12.Service.Messages
 
     public class AddProductResponse
     {
+        public int NewProductId { get; set; }
     }
 }

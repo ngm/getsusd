@@ -10,17 +10,17 @@
       </subFeatureModelElements>
     </feature>
     <feature name="AddProduct" occurence="Mandatory" isReference="false" />
-    <feature name="TagProduct" occurence="Mandatory" isReference="false" />
+    <feature name="AddTagToProduct" occurence="Mandatory" isReference="false" />
     <feature name="AddPlaceToBuy" occurence="Mandatory" isReference="false" />
     <feature name="ProductTracking" occurence="Mandatory" isReference="false">
       <subFeatureModelElements>
         <featureMoniker name="//AddProduct" />
         <featureMoniker name="//AddPlaceToBuy" />
-        <featureMoniker name="//TagProduct" />
         <featureMoniker name="//ShameProduct" />
         <featureMoniker name="//LinkToCompany" />
         <featureMoniker name="//ListProducts" />
         <featureMoniker name="//EditProduct" />
+        <featureMoniker name="//ProductTagging" />
       </subFeatureModelElements>
     </feature>
     <feature name="ProductDiscovery" occurence="Mandatory" isReference="false">
@@ -49,5 +49,12 @@
     </feature>
     <feature name="ListProducts" occurence="Mandatory" isReference="false" />
     <feature name="EditProduct" occurence="Mandatory" isReference="false" />
+    <feature name="RemoveTagFromProduct" occurence="Mandatory" isReference="false" />
+    <feature name="ProductTagging" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//AddTagToProduct" />
+        <featureMoniker name="//RemoveTagFromProduct" />
+      </subFeatureModelElements>
+    </feature>
   </featureModelElements>
 </featureModel>

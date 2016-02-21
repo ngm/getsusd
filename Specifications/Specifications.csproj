@@ -114,15 +114,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ListProducts.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\RemoveTagFromProduct.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemoveTagFromProduct.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ShameProduct.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShameProduct.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\TagProduct.feature.cs">
+    <Compile Include="Features\AddTagToProduct.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TagProduct.feature</DependentUpon>
+      <DependentUpon>AddTagToProduct.feature</DependentUpon>
     </Compile>
     <Compile Include="Goals\Overview.feature.cs">
       <AutoGen>True</AutoGen>
@@ -148,13 +153,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ListProducts.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\RemoveTagFromProduct.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RemoveTagFromProduct.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\ShameProduct.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ShameProduct.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\TagProduct.feature">
+    <None Include="Features\AddTagToProduct.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>TagProduct.feature.cs</LastGenOutput>
+      <LastGenOutput>AddTagToProduct.feature.cs</LastGenOutput>
     </None>
     <None Include="Goals\Overview.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
