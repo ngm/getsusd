@@ -16,8 +16,14 @@
                 <div class="caption">
                     <h5>@Html.ActionLink(product.ProductName, "View", new { productId = product.ProductId })</h5>
                     <p>@product.ProductNotes</p>
-                    <p>
-                        @string.Join(@"/", product.Tags.Select(t => $"[{t.TagName}]"))
+                        <p>
+                    @foreach (var tag in product.Tags)
+                    {
+                        <span class="badge">
+                            @tag.TagName
+                        </span>
+                    }
+                            </p>
                 </div>
             </div>
         </div>

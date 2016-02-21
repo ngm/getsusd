@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace sdg12.Controllers
 {
-    [RoutePrefix("Product")]
+    [RoutePrefix("product")]
     public class ProductController : Controller
     {
         private readonly IMediator mediator;
@@ -21,7 +21,7 @@ namespace sdg12.Controllers
             this.mediator = mediator;
         }
 
-        [Route("List")]
+        [Route("list")]
         public ActionResult List()
         {
             var userId = 1;
@@ -37,7 +37,7 @@ namespace sdg12.Controllers
         }
 
         [HttpPost]
-        [Route("Add")]
+        [Route("add")]
         public ActionResult Add(ProductInputModel productInputs)
         {
             var userId = 1;
@@ -55,7 +55,7 @@ namespace sdg12.Controllers
         }
 
 
-        [Route("View")]
+        [Route("{productId}/view")]
         public ActionResult View(int productId)
         {
             var userId = 1;
@@ -72,8 +72,8 @@ namespace sdg12.Controllers
         }
 
         [HttpPost]
-        [Route("Edit")]
-        public ActionResult Edit(ProductInputModel productInputs)
+        [Route("{productId}/edit")]
+        public ActionResult Edit(int productId, ProductInputModel productInputs)
         {
             var userId = 1;
 
@@ -88,6 +88,24 @@ namespace sdg12.Controllers
             var result = mediator.Send(command);
 
             return RedirectToAction("View", new { productId = productInputs.ProductId });
+        }
+
+        [HttpPost]
+        [Route("{productId}/addtag")]
+        public ActionResult AddTag(int productId, string tagName)
+        {
+            var userId = 1;
+
+            var command = new AddTagToProductCommand
+            {
+                ProductId = productId,
+                TagName = tagName,
+                UserId = userId
+            };
+
+            var result = mediator.Send(command);
+
+            return RedirectToAction("View", new { productId = productId });
         }
     }
 }
