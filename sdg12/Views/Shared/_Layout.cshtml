@@ -21,13 +21,13 @@
                 @Html.ActionLink("GET SUSD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li> @Html.ActionLink("My Products", "List", "Product", new { area = "" }, null) </li>
-                    <li> @Html.ActionLink("My Network", "Index", "Network", new { area = "" }, null) </li>
-                    <li> @Html.ActionLink("About", "About", "Home", new { area = "" }, null) </li>
-                </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    <ul class="nav navbar-nav">
+                        <li> @Html.ActionLink("My Products", "List", "Product", new { area = "" }, null) </li>
+                        <li> @Html.ActionLink("My Network", "Index", "Network", new { area = "" }, null) </li>
+                        <li> @Html.ActionLink("About", "About", "Home", new { area = "" }, null) </li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href=""><span aria-hidden="true" class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
                         <li>
