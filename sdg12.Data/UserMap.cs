@@ -10,6 +10,7 @@ namespace sdg12.Data
             Id(x => x.Id);
 
             Map(x => x.UserName);
+            Map(x => x.Password);
             Map(x => x.GivenName);
             Map(x => x.Surname);
 

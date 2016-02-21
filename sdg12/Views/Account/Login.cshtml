@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form" }))
+        {
+            <div class="form-group">
+                <label for="ProductName">User Name</label>
+                @Html.TextBox("UserName")
+            </div>
+            <div class="form-group">
+                <label for="ProductNotes">Password</label>
+                @Html.TextBox("Password")
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        }
+    </div>
+
+</div>

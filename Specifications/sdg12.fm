@@ -14,24 +14,25 @@
     <feature name="AddPlaceToBuy" occurence="Mandatory" isReference="false" />
     <feature name="ProductTracking" occurence="Mandatory" isReference="false">
       <subFeatureModelElements>
-        <featureMoniker name="//AddProduct" />
         <featureMoniker name="//AddPlaceToBuy" />
         <featureMoniker name="//ShameProduct" />
         <featureMoniker name="//LinkToCompany" />
         <featureMoniker name="//ListProducts" />
-        <featureMoniker name="//EditProduct" />
         <featureMoniker name="//ProductTagging" />
+        <featureMoniker name="//ProductEditing" />
       </subFeatureModelElements>
     </feature>
     <feature name="ProductDiscovery" occurence="Mandatory" isReference="false">
       <subFeatureModelElements>
         <featureMoniker name="//SearchForProduct" />
         <featureMoniker name="//TrustRanking" />
+        <featureMoniker name="//PinProduct" />
       </subFeatureModelElements>
     </feature>
     <feature name="NetworkBuilding" occurence="Mandatory" isReference="false">
       <subFeatureModelElements>
         <featureMoniker name="//TrustUser" />
+        <featureMoniker name="//PeopleYouTrust" />
       </subFeatureModelElements>
     </feature>
     <feature name="TrustUser" occurence="Mandatory" isReference="false" />
@@ -47,7 +48,11 @@
         <featureMoniker name="//TrustRankingFromNetwork" />
       </subFeatureModelElements>
     </feature>
-    <feature name="ListProducts" occurence="Mandatory" isReference="false" />
+    <feature name="ListProducts" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//GroupByTag" />
+      </subFeatureModelElements>
+    </feature>
     <feature name="EditProduct" occurence="Mandatory" isReference="false" />
     <feature name="RemoveTagFromProduct" occurence="Mandatory" isReference="false" />
     <feature name="ProductTagging" occurence="Mandatory" isReference="false">
@@ -56,5 +61,14 @@
         <featureMoniker name="//RemoveTagFromProduct" />
       </subFeatureModelElements>
     </feature>
+    <feature name="ProductEditing" occurence="Mandatory" isReference="false">
+      <subFeatureModelElements>
+        <featureMoniker name="//EditProduct" />
+        <featureMoniker name="//AddProduct" />
+      </subFeatureModelElements>
+    </feature>
+    <feature name="GroupByTag" occurence="Mandatory" isReference="false" />
+    <feature name="PeopleYouTrust" occurence="Mandatory" isReference="false" />
+    <feature name="PinProduct" occurence="Mandatory" isReference="false" />
   </featureModelElements>
 </featureModel>

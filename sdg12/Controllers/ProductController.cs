@@ -6,13 +6,15 @@ using sdg12.Service.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
 namespace sdg12.Controllers
 {
+    [Authorize]
     [RoutePrefix("product")]
-    public class ProductController : Controller
+    public partial class ProductController : Controller
     {
         private readonly IMediator mediator;
 
@@ -21,14 +23,18 @@ namespace sdg12.Controllers
             this.mediator = mediator;
         }
 
-        [Route("list")]
-        public ActionResult List()
+        public int CurrentUserId()
         {
-            var userId = 1;
+            var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+            return Convert.ToInt32(claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value);
+        }
 
+        [Route("list")]
+        public virtual ActionResult List()
+        {
             var request = new GetProductsQuery()
             {
-                UserId = userId
+                UserId = CurrentUserId()
             };
 
             var result = mediator.Send(request);
@@ -38,13 +44,13 @@ namespace sdg12.Controllers
 
         [HttpPost]
         [Route("add")]
-        public ActionResult Add(ProductInputModel productInputs)
+        public virtual ActionResult Add(ProductInputModel productInputs)
         {
             var userId = 1;
 
             var command = new AddProductCommand
             {
-                UserId = userId,
+                UserId = CurrentUserId(),
                 ProductName = productInputs.ProductName,
                 ProductNotes = productInputs.ProductNotes
             };
@@ -56,13 +62,11 @@ namespace sdg12.Controllers
 
 
         [Route("{productId}/view")]
-        public ActionResult View(int productId)
+        public virtual ActionResult View(int productId)
         {
-            var userId = 1;
-
             var request = new GetProductsQuery()
             {
-                UserId = userId,
+                UserId = CurrentUserId(),
                 ProductId = productId
             };
 
@@ -73,14 +77,14 @@ namespace sdg12.Controllers
 
         [HttpPost]
         [Route("{productId}/edit")]
-        public ActionResult Edit(int productId, ProductInputModel productInputs)
+        public virtual ActionResult Edit(int productId, ProductInputModel productInputs)
         {
             var userId = 1;
 
             var command = new EditProductCommand
             {
                 ProductId = productInputs.ProductId,
-                UserId = userId,
+                UserId = CurrentUserId(),
                 ProductName = productInputs.ProductName,
                 ProductNotes = productInputs.ProductNotes
             };
@@ -92,15 +96,13 @@ namespace sdg12.Controllers
 
         [HttpPost]
         [Route("{productId}/addtag")]
-        public ActionResult AddTag(int productId, string tagName)
+        public virtual ActionResult AddTag(int productId, string tagName)
         {
-            var userId = 1;
-
             var command = new AddTagToProductCommand
             {
                 ProductId = productId,
                 TagName = tagName,
-                UserId = userId
+                UserId = CurrentUserId()
             };
 
             var result = mediator.Send(command);
@@ -110,14 +112,12 @@ namespace sdg12.Controllers
 
         [HttpPost]
         [Route("{productId}/removetag")]
-        public ActionResult RemoveTag(int productId, int userProductTagId)
+        public virtual ActionResult RemoveTag(int productId, int userProductTagId)
         {
-            var userId = 1;
-
             var command = new RemoveTagFromProductCommand
             {
                 ProductId = productId,
-                UserId = userId,
+                UserId = CurrentUserId(),
                 UserProductTagId = userProductTagId
             };
 

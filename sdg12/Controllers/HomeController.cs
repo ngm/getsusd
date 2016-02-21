@@ -9,7 +9,8 @@ using System.Web.Mvc;
 
 namespace sdg12.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public partial class HomeController : Controller
     {
         private readonly IMediator mediator;
 
@@ -17,10 +18,14 @@ namespace sdg12.Controllers
         {
             this.mediator = mediator;
         }
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
-            var userId = mediator.Send(new SeedDataCommand());
+            //var userId = mediator.Send(new SeedDataCommand());
             return RedirectToAction("List", "Product");
+        }
+        public virtual ActionResult About()
+        {
+            return View();
         }
     }
 }
